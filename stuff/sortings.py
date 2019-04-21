@@ -5,7 +5,7 @@ import random
 
 _ = int(input())
 numbers = [int(param) for param in input().split(' ')]
-numbers = [random.randint(0, 10000) for _ in range(50)]
+# numbers = [random.randint(0, 10000) for _ in range(50)]
 
 
 def bubble_sort(l):
@@ -215,7 +215,7 @@ def heap_sort(lst: list) -> list:
     return ordered
 
 
-def radix_sort(lst: list) -> list:
+def radix_sort_lsd(lst: list) -> list:
     lst = lst.copy()
 
     digits = int(math.log10(max(lst)))+1
@@ -236,6 +236,43 @@ def radix_sort(lst: list) -> list:
     return lst
 
 
+def radix_sort_msd(lst: list) -> list:
+    lst = lst.copy()
+
+    # 정렬해야 되는 배열 원소들의 최대 자릿수를 구합니다.
+    # 예: 10의 상용로그는 1, 100의 상용로그는 2이므로 상용로그가 [1, 2)인 수,
+    #     즉 상용로그를 내림한 수가 1인 수는 두 자리 숫자이다.
+    digits = int(math.log10(max(lst)))+1
+
+    # 십진법 기수 정렬
+    number_of_bucket = 10
+
+    # 버킷 생성, buckets는 배열의 배열.
+    buckets = [[] for _ in range(number_of_bucket)]
+
+    # 한 자리수로 정렬한 다음 그 다음 자리수를 다시 기수 정렬하는 일을 반복해야 하는데,
+    # 이 작업에 함수 재귀 호출 대신 스택을 사용합니다.
+    # 각 원소는 편의상 튜플이며, 차례로 (현재 처리중인 자리 수), 처리해야 할 범위의 하한, 상한
+    stack = [(digits, 0, len(lst))]
+
+    while stack:
+        radix, left, right = stack.pop()
+        for element in lst[left:right]:
+            index = element//int(10**(radix-1))
+            index %= number_of_bucket
+            buckets[index].append(element)
+
+        new_lst = []
+        for bucket in buckets:
+            if len(bucket) > 1 and radix > 1:
+                stack.append((radix-1, left+len(new_lst),
+                              left+len(new_lst)+len(bucket)))
+            new_lst += bucket
+            bucket.clear()
+        lst = lst[:left] + new_lst + lst[right:]
+    return lst
+
+
 global start
 
 start = time()
@@ -243,11 +280,11 @@ start = time()
 
 def show_time():
     global start
-    print(time() - start)
+    # print(time() - start)
     start = time()
 
 
-do_print = False
+do_print = True
 if do_print:
     print('source         : '+(' '.join(str(num) for num in numbers)))
 result = sorted(numbers)
@@ -292,7 +329,11 @@ result = heap_sort(numbers)
 show_time()
 if do_print:
     print('heap           : '+(' '.join(str(num) for num in result)))
-result = radix_sort(numbers)
+result = radix_sort_lsd(numbers)
 show_time()
 if do_print:
-    print('radix          : '+(' '.join(str(num) for num in result)))
+    print('radix(lsd)     : '+(' '.join(str(num) for num in result)))
+result = radix_sort_msd(numbers)
+show_time()
+if do_print:
+    print('radix(msd)     : '+(' '.join(str(num) for num in result)))

@@ -23,14 +23,6 @@ def fib(num: int):
 
         a1, b1, c1, d1 = matrix1
         a2, b2, c2, d2 = matrix2
-        a1 %= 1000000
-        b1 %= 1000000
-        c1 %= 1000000
-        d1 %= 1000000
-        a2 %= 1000000
-        b2 %= 1000000
-        c2 %= 1000000
-        d2 %= 1000000
 
         return (a1*a2+b1*c2, a1*b2+b1*d2, c1*a2+d1*c2, c1*b2+d1*d2)
 
@@ -61,4 +53,4 @@ def fib(num: int):
     return power((1, 1, 1, 0), num-1)[0]
 
 
-print(fib(int(input())) % 1000000)
+print(fib(int(input()) % 1500000) % 1000000)
