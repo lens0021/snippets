@@ -24,7 +24,7 @@ def postorder(node: Node):
     print(node.value)
 
 
-length = randint(1000, 10000)
+length = randint(10, 20)
 max_num = 1000000
 # length = 10
 # max_num = 100
