@@ -1,21 +1,13 @@
-
-DATA = 0
-LEFT = 1
-RIGHT = 2
-
-KEY = 0
-VALUE = 1
-
-tree = [None, None, None]
+from key_value_binary_tree import DATA, LEFT, RIGHT, KEY, VALUE, print_tree, tree
 
 
 def tree_add(tree, key, value):
-    if tree[DATA] == None:
-        tree[DATA] = [key, value]
+    if not tree:
+        tree += [[key, value], None, None]
         return
 
     parent = node = tree
-    while node != None and node[DATA] != None:
+    while node != None:
         parent = node
 
         if key < node[DATA][KEY]:
@@ -59,7 +51,7 @@ def tree_update(tree, key, value):
 def tree_delete(tree, key):
     # 지울 노드와 그 부모를 찾는다
     parent = node = tree
-    while node != None and node[DATA] != None and node[DATA][KEY] != key:
+    while node != None and node[DATA][KEY] != key:
         parent = node
         if key < node[DATA][KEY]:
             node = node[LEFT]
@@ -93,27 +85,39 @@ def tree_delete(tree, key):
             succ_p = succ
             succ = succ[LEFT]
 
-        print(succ_p)
-        succ_p[LEFT] = None
+        if succ_p[LEFT] == succ:
+            succ_p[LEFT] = succ[RIGHT]
+        else:
+            succ_p[RIGHT] = succ[RIGHT]
         node[DATA] = succ[DATA]
 
 
-tree_add(tree, 'also', '또한')
+height = 4
+
 tree_add(tree, 'if', '만약')
+tree_add(tree, 'also', '또한')
 tree_add(tree, 'while', '동안')
-tree_add(tree, 'for', 'にとって')
+tree_add(tree, 'for', 'para')
+tree_add(tree, 'zero', '제로')
+tree_add(tree, 'when', '언제')
 
-print(tree)
+print_tree(tree, height)
 
-print('if 삭제')
-tree_delete(tree, 'if')
-print(tree)
+print('\nalso 삭제')
+tree_delete(tree, 'also')
+print_tree(tree, height)
 
-print('for 변경')
+print('\nwhile 삭제')
+tree_delete(tree, 'while')
+print_tree(tree, height)
+
+print('\nfor 변경')
 tree_update(tree, 'for', '...에 대한')
-print(tree)
+print_tree(tree, height)
+
+print('\n추가:switch, break, continue')
 
 tree_add(tree, 'switch', '스위치')
 tree_add(tree, 'break', '단절')
 tree_add(tree, 'continue', '잇다')
-print(tree)
+print_tree(tree, height)
