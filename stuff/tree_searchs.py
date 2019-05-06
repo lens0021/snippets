@@ -65,7 +65,40 @@ def tree_bfs(tree):
         should_visit.append(node[RIGHT])
 
 
+def preorder(tree):
+    if tree == None:
+        return
+
+    print(tree[DATA])
+    preorder(tree[LEFT])
+    preorder(tree[RIGHT])
+
+
+def inorder(tree):
+    if tree == None:
+        return
+
+    inorder(tree[LEFT])
+    print(tree[DATA])
+    inorder(tree[RIGHT])
+
+
+def postorder(tree):
+    if tree == None:
+        return
+
+    postorder(tree[LEFT])
+    postorder(tree[RIGHT])
+    print(tree[DATA])
+
+
 print('너비 우선 탐색:')
 tree_bfs(tree)
 print('깊이 우선 탐색:')
 tree_dfs(tree)
+print('Preorder:')
+preorder(tree)
+print('Inorder:')
+inorder(tree)
+print('Postorder:')
+postorder(tree)
