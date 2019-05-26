@@ -1,4 +1,5 @@
 # https://www.acmicpc.net/problem/5052
+from sys import stdin
 
 
 def insert_with_duplication_check(root, key):
@@ -9,27 +10,27 @@ def insert_with_duplication_check(root, key):
     if root == None:
         root = {}
 
-    pos = root
+    current = root
     for level in range(len(key)):
         index = key[level]
-        if index not in pos:
-            pos[index] = {}
-        elif 'is_end' in pos[index]:
+        if index not in current:
+            current[index] = {}
+        elif 'is_end' in current[index]:
             return True
-        pos = pos[index]
-    pos['is_end'] = True
+        current = current[index]
+
+    if current:
+        return True
+    current['is_end'] = True
 
     # print('Successfully inserted')
-    # print_tree(root)
+    # print(root)
     return False
-
-
-def print_tree(node):
-    print(node)
 
 
 def test(numbers):
     trie = {}
+
     for num in numbers:
         if insert_with_duplication_check(trie, num):
             print('NO')
@@ -42,5 +43,5 @@ number_of_test_cases = int(input())
 
 for _ in range(number_of_test_cases):
     number_of_numbers = int(input())
-    numbers = [input() for _ in range(number_of_numbers)]
+    numbers = [stdin.readline().rstrip() for _ in range(number_of_numbers)]
     test(numbers)
