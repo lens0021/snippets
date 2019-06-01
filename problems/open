@@ -3,22 +3,31 @@ set -euo pipefail; IFS=$'\n\t'
 
 case $1 in
   pibonacci|피보나치|pibonacci1|피보나치1)
-    NUMBER=10870
-    ;;
+    N=10870;;
   pibonacci2|피보나치2)
-    NUMBER=2747
-    ;;
+    N=2747;;
   pibonacci3|피보나치3)
-    NUMBER=2748
-    ;;
+    N=2748;;
   pibonacci4|피보나치4)
-    NUMBER=10826
-    ;;
+    N=10826;;
   pibonacci5|피보나치5)
-    NUMBER=2749
-    ;;
+    N=2749;;
+  'tower of hanoi'|hanoi)
+    N=1914;;
+  traversal|'순회')
+    N=1991;;
+  bst)
+    N=5639;;
+  trie)
+    N=5052;;
+  trie2)
+    N=11590;;
+  'graph_search')
+    N=1260;;
+  'dfs')
+    N=1012;;
   *)
-    NUMBER=$1
+    N=$1
 esac
 
-code -a problems/${NUMBER}.py
+code -a "problems/${N}.py"
