@@ -1,4 +1,4 @@
-# problems 디렉토리
+# Baekjoon Online Judge용 커맨드라인 인터페이스
 
 ```shell
 ./index 1000
