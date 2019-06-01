@@ -1,3 +1,19 @@
+# 실행 시 다음과 같은 출력을 합니다:
+# source         : 40 41 85 46 47 89 20 23 58 31
+# built-in       : 20 23 31 40 41 46 47 58 85 89
+# bubble         : 20 23 31 40 41 46 47 58 85 89
+# insertion      : 20 23 31 40 41 46 47 58 85 89
+# selection      : 20 23 31 40 41 46 47 58 85 89
+# merge          : 20 23 31 40 41 46 47 58 85 89
+# merge(in-place): 20 23 31 40 41 46 47 58 85 89
+# quick          : 20 23 31 40 41 46 47 58 85 89
+# quick(in-place): 20 23 31 40 41 46 47 58 85 89
+# heap(built-in) : 20 23 31 40 41 46 47 58 85 89
+# heap           : 20 23 31 40 41 46 47 58 89 85
+# radix(lsd)     : 20 23 31 40 41 46 47 58 85 89
+# radix(msd)     : 20 23 31 40 41 46 47 58 85 89
+
+
 from time import time
 from heapq import heappush, heappop
 import math
