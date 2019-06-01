@@ -17,7 +17,10 @@ Your answer is good for in/output samples
 
 이후 실행시에는 `[problem_number].py`에 `[problem_number].input.txt`을 입력으로 사용하여 출력을 `[problem_number].your.txt`에 저장하고 이를 예제 출력과 비교합니다.
 
-예제 입력이 둘 이상인 경우 불러와지지 않으니 직접 추가하여야 합니다.
+### 주의사항
+
+- 이 프로그램은 매우 [@lens0021]를 위하여 작성되어 있어 다른 용도의 사용에는 불편함이 있습니다. 포크하여 수정하기도 불편할 것으로 예상되는 바, 필요한 경우에는 코드를 참고하여 새 프로그램을 만드는 것을 권하여 드립니다.
+- 예제 입력이 둘 이상인 경우 불러와지지 않으니 직접 추가하여야 합니다.
 
 ## Dependencies
 
@@ -33,3 +36,4 @@ npm install
 ```
 
 [baekjoon online judge]: https://www.acmicpc.net/
+[@lens0021]: https://github.com/lens0021
