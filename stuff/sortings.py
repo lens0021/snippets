@@ -3,9 +3,7 @@ from heapq import heappush, heappop
 import math
 import random
 
-_ = int(input())
-numbers = [int(param) for param in input().split(' ')]
-# numbers = [random.randint(0, 10000) for _ in range(50)]
+numbers = [random.randint(0, 100) for _ in range(10)]
 
 
 def bubble_sort(l):
