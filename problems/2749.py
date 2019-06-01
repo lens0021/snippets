@@ -1,11 +1,5 @@
 # https://www.acmicpc.net/problem/2749
 
-# 2747번. 피보나치 수 https://www.acmicpc.net/problem/2747      45
-# 2748번. 피보나치 수 2 https://www.acmicpc.net/problem/2748    90
-# 2749번. 피보나치 수 3 https://www.acmicpc.net/problem/2749    10**18
-# 10826번. 피보나치 수 4 https://www.acmicpc.net/problem/10826  10000
-# 10870번. 피보나치 수 5 https://www.acmicpc.net/problem/10870  20
-
 
 def fib(num: int):
     '''
