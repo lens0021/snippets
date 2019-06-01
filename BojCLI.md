@@ -5,7 +5,7 @@ $ ./index 1000
 Your answer is good for in/output samples
 ```
 
-## Usage
+## 사용법
 
 루트 폴더에서 다음 명령 실행시 [Baekjoon Online Judge]의 문제를 가져오거나 채점합니다. (problem_number는 문제 번호 숫자)
 
@@ -22,14 +22,14 @@ Your answer is good for in/output samples
 - 이 프로그램은 매우 [@lens0021]를 위하여 작성되어 있어 다른 용도의 사용에는 불편함이 있습니다. 포크하여 수정하기도 불편할 것으로 예상되는 바, 필요한 경우에는 코드를 참고하여 새 프로그램을 만드는 것을 권하여 드립니다.
 - 예제 입력이 둘 이상인 경우 불러와지지 않으니 직접 추가하여야 합니다.
 
-## Dependencies
+## 의존성
 
 - Node(for fetching in/output samples)
 - Visual Studio Code(as just a text editor)
 - git(for diff engine)
 - Google Chrome
 
-## Install
+## 설치 방법
 
 ```shell
 npm install
