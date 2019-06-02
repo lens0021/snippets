@@ -1,2 +1,5 @@
 node_modules/
 __pycache__/
+problems/*.input*.txt
+problems/*.output*.txt
+problems/*.your.txt
