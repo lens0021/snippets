@@ -8,7 +8,7 @@ class CollisionResolutionStrategy(Enum):
     CHAINING = 2
 
 
-TURN_ON_DEBUG_LOG = True  # 참이면 디버그 로그를 출력합니다.
+DEBUG = True  # 참이면 디버그 로그를 출력합니다.
 SCENARIO_NUMBER = 0  # 사용할 시나리오를 고릅니다.
 USE_RANDOM_SEED = False  # 참이라면 시드를 사용합니다.
 COLLISION_RESOLUTION_STRATEGY = CollisionResolutionStrategy.LINEAR_PROBING
@@ -45,12 +45,12 @@ def hash_table_add(key: str, val: str):
 
         while hash_table[idx] != None:
             if hash_table[idx] != TOMBSTONE and hash_table[idx][0] == key:
-                if TURN_ON_DEBUG_LOG:
+                if DEBUG:
                     print('탐색 키가 중복되었습니다.')
                 return
             idx = (idx + 1) % len(hash_table)
             if idx == starting_index:
-                if TURN_ON_DEBUG_LOG:
+                if DEBUG:
                     print('해시테이블이 가득 찼습니다.')
                 # TODO 테이블 늘려서 추가하기
                 return
@@ -75,12 +75,12 @@ def hash_table_search(key: str):
             else:
                 pass
 
-            if TURN_ON_DEBUG_LOG:
+            if DEBUG:
                 print(f'{key}를 불러오는 도중 충돌 발견')
 
             idx = (idx+1) % len(hash_table)
             if idx == starting_index:
-                if TURN_ON_DEBUG_LOG:
+                if DEBUG:
                     print(f'값이 없음')
                 return None
             else:
@@ -102,19 +102,19 @@ def hash_table_delete(key: str):
         while hash_table[idx] != None:
             if hash_table[idx] != TOMBSTONE:
                 if hash_table[idx][0] == key:
-                    if TURN_ON_DEBUG_LOG:
+                    if DEBUG:
                         print(f'{idx}에 있던 {key} 삭제')
                     hash_table[idx] = TOMBSTONE
                     return
             else:
                 pass
 
-            if TURN_ON_DEBUG_LOG:
+            if DEBUG:
                 print(f'{key}를 삭제하는 도중 충돌 발견')
 
             idx = (idx+1) % len(hash_table)
             if idx == starting_index:
-                if TURN_ON_DEBUG_LOG:
+                if DEBUG:
                     print(f'값이 없음')
                 return
             else:
