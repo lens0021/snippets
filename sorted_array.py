@@ -82,7 +82,31 @@ def array_update(key, score):
 
 
 def array_range_query(low_key, high_key):
-    pass
+    low_index, high_index = 0, 0
+
+    low, high = 0, len(arr)
+    while high - low >= 0:
+        middle = (high + low)//2
+        if low_key > arr[middle][0]:
+            low = middle+1
+        elif low_key < arr[middle][0]:
+            high = middle-1
+        else:
+            low_index = middle
+            break
+
+    low, high = 0, len(arr)
+    while high - low >= 0:
+        middle = (high + low)//2
+        if high_key > arr[middle][0]:
+            low = middle+1
+        elif high_key < arr[middle][0]:
+            high = middle-1
+        else:
+            high_index = middle
+            break
+
+    return arr[low_index:high_index+1]
 
 
 for name in [
